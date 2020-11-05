@@ -31,6 +31,20 @@ if(a){
 }
 }
 
+int fmax(struct nt *a){
+int val,left,right,max=int_min;
+if(a!=NULL){
+    val=a->data;
+    left=fmax(a->left);
+    right=fmax(a->right);
+    if(left>right) max=left;
+    else max=right;
+    if(val>max)
+        max=val;
+}
+return max;
+}
+
 struct nt* newnode(int a){
 struct nt *n=(struct nt*)malloc(sizeof(struct nt));
 n->data=a;
@@ -64,6 +78,6 @@ printf("PreOrder is\t");
       printf("PostOrder is\t");
       postorder(a);
       printf("\n");
-
+printf("The largest value of the binary tree is %d",fmax(a));
     return 0;
 }
