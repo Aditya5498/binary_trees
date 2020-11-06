@@ -63,6 +63,14 @@ else{
 }
 }
 
+void print(struct nt* a){
+    int i;
+for(i=1;i<=4;i++){
+        p1(a,i);
+        printf("\n");
+      }
+}
+
 int main() {
 int i,j,b;
     printf("***** Traversal of binary tree *****\n");
@@ -77,11 +85,7 @@ int i,j,b;
       a->right->left=newnode(6);
       a->right->right=newnode(7);
 
-      printf("\n Below is the given tree \n");
-      for(i=1;i<=4;i++){
-        p1(a,i);
-        printf("\n");
-      }
+
 
 printf("PreOrder is\t");
       preorder(a);
@@ -93,6 +97,9 @@ printf("PreOrder is\t");
       postorder(a);
       printf("\n");
 printf("The largest value of the binary tree is %d\n",fmax(a));
+
+ printf("\n Below is the given tree \n");
+      print(a);
 
 
 
