@@ -23,7 +23,7 @@ if(a){
 }
 }
 
-void postorder(struct nt *a){
+postorder(struct nt *a){
 if(a){
     postorder(a->left);
     postorder(a->right);
@@ -53,7 +53,15 @@ n->left=NULL;
 return(n);
 };
 
+void p1(struct nt* a,int l){
 
+if(l==1)
+    printf("%d ",a->data);
+else{
+    p1(a->left,l-1);
+    p1(a->right,l-1);
+}
+}
 
 int main() {
 int i,j,b;
@@ -69,6 +77,12 @@ int i,j,b;
       a->right->left=newnode(6);
       a->right->right=newnode(7);
 
+      printf("\n Below is the given tree \n");
+      for(i=1;i<=4;i++){
+        p1(a,i);
+        printf("\n");
+      }
+
 printf("PreOrder is\t");
       preorder(a);
       printf("\n");
@@ -78,6 +92,9 @@ printf("PreOrder is\t");
       printf("PostOrder is\t");
       postorder(a);
       printf("\n");
-printf("The largest value of the binary tree is %d",fmax(a));
+printf("The largest value of the binary tree is %d\n",fmax(a));
+
+
+
     return 0;
 }
