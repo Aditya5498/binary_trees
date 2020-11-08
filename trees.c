@@ -81,11 +81,18 @@ else{
     else{
     c=find(a->left,b);
     if(c!=0)
-        return c;
+        c;
     else
-    return find(a->right,b);
+    find(a->right,b);
 }
 }
+}
+
+int count(struct nt *a){
+if(a==NULL)
+return 0;
+return count(a->left)+count(a->right)+1;
+
 }
 
 int main() {
@@ -103,7 +110,7 @@ int i,j,b;
       a->right->right=newnode(7);
 
 
-printf("PreOrder is\t");
+    printf("PreOrder is\t");
       preorder(a);
       printf("\n");
       printf("InOrder is\t");
@@ -112,18 +119,21 @@ printf("PreOrder is\t");
       printf("PostOrder is\t");
       postorder(a);
       printf("\n");
-printf("The largest value of the binary tree is %d\n",fmax(a));
+printf("\nThe largest value of the binary tree is %d\n",fmax(a));
 
-printf("Do you want to search for a number?\nIf yes then type 1 or else type any other number\n");
+printf("\nDo you want to search for a number?\nIf yes then type 1 or else type any other number\n");
 scanf("%d",&j);
 if(j==1){
-        printf("Enter the nummber\n");
+        printf("Enter the number\n");
 scanf("%d",&j);
 if(find(a,j)==1)
     printf("The number %d is found in the tree",j);
 else
     printf("The number is not present");
 }
+
+printf("\nThe number of elements are %d\n",count(a));
+
  printf("\n Below is the given tree \n");
       print(a);
 
