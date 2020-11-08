@@ -71,9 +71,26 @@ for(i=1;i<=4;i++){
       }
 }
 
+int find(struct nt* a,int b){
+int c;
+if(a == NULL)
+    return 0;
+else{
+    if (a->data==b)
+    return 1;
+    else{
+    c=find(a->left,b);
+    if(c!=0)
+        return c;
+    else
+    return find(a->right,b);
+}
+}
+}
+
 int main() {
 int i,j,b;
-    printf("***** Traversal of binary tree *****\n");
+    printf("***** Traversal of binary tree *****\n\n");
       struct nt *a=(struct nt*)malloc(sizeof(struct nt));
 
 
@@ -84,7 +101,6 @@ int i,j,b;
       a->left->left=newnode(4);
       a->right->left=newnode(6);
       a->right->right=newnode(7);
-
 
 
 printf("PreOrder is\t");
@@ -98,6 +114,16 @@ printf("PreOrder is\t");
       printf("\n");
 printf("The largest value of the binary tree is %d\n",fmax(a));
 
+printf("Do you want to search for a number?\nIf yes then type 1 or else type any other number\n");
+scanf("%d",&j);
+if(j==1){
+        printf("Enter the nummber\n");
+scanf("%d",&j);
+if(find(a,j)==1)
+    printf("The number %d is found in the tree",j);
+else
+    printf("The number is not present");
+}
  printf("\n Below is the given tree \n");
       print(a);
 
