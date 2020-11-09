@@ -97,6 +97,16 @@ if(a){
      return a;
 };
 
+int ansis(struct node *root,struct node *last){
+if(root==NULL)
+    return 0;
+if(root->left==last || root->right==last || ansis(root->left,last) || ansis(root->right,last)){
+    printf("-> %d ",root->data);
+    return 1;
+}
+
+}
+
 void main(void){
 struct node *a = (struct a*)malloc(sizeof(struct node));
 struct node *temp = (struct a*)malloc(sizeof(struct node));
@@ -114,9 +124,13 @@ printf("\nThe number of half leafs are %d\n",hleafs(a));
 
 printf("The sum of all the elements is %d\n",sum(a));
 
-
 printf("\n The height of the tree is %d\n\n",height(a));
-printf("The number of elements in the tree are %d\n\n Below is the binary tree \n",max(a));
+
+printf("The ancestors of 6 are 6 ");
+
+temp=ansis(a,a->right->right);
+
+printf("\n\nThe number of elements in the tree are %d\n\n Below is the binary tree \n",max(a));
 pl(a);
 temp=mirror(a);
 printf("\nThe mirrored tree is\n");
