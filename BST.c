@@ -71,12 +71,39 @@ else{
 }
 }
 
-void print(struct nt* a){
+void print(struct node* a){
     int i;
 for(i=1;i<=4;i++){
         p1(a,i);
         printf("\n");
       }
+}
+
+int del(struct node *a,int b){
+    struct node *temp = (struct node*)malloc(sizeof(struct node));
+if (a->left->data==b){
+    temp = a->left;
+    a->left=a->left->left;
+    free(temp);
+    return 1;
+    }
+else if (a->right->data==b){
+    temp = a->right;
+    a->right=a->right->right;
+    free(temp);
+    return 1;
+    }
+else if (a->left->data!=b){
+   del(a->left,b);
+   del(a->right,b);
+    }
+    else if (a->right->data!=b){
+   del(a->left,b);
+   del(a->right,b);
+    }
+    else if (!a->left || !a->right){
+   return 0;
+    }
 }
 
 void main(){
@@ -98,6 +125,13 @@ largest(a);
 //printf("\n Which number would you like to insert?\n");
 //scanf("%d",&i);
 //a=insert(a,i);
+
+printf("\nEnter the number you would like to delete: \n");
+scanf("%d",&i);
+c=del(a,i);
+if(c==1)
+    printf("The number is deleted\n");
+else printf("\n The number was not found\n");
 
 printf("\nEnter the number you would like to search: \n");
 scanf("%d",&i);
